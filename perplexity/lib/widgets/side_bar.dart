@@ -31,13 +31,27 @@ class _SideBarState extends State<SideBar> {
             ),
           ),
           const SizedBox(height: 16),
-          Container(
-            margin: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
-            child: Icon(
-              Icons.add,
-              color: AppColors.whiteColor,
-              size: 30,
-            ),
+          Row(
+            mainAxisAlignment: isCollapsed ? MainAxisAlignment.center : MainAxisAlignment.start,
+            children: [
+              Container(
+                margin: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+                child: Icon(
+                  Icons.add,
+                  color: AppColors.whiteColor,
+                  size: 30,
+                ),
+              ),
+              isCollapsed
+                  ? const SizedBox()
+                  : Text(
+                    "Home",
+                    style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                  ),
+                )
+            ],
           ),
           const SizedBox(height: 16),
           Container(
