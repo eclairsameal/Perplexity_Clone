@@ -6,8 +6,15 @@ import 'package:perplexity/widgets/search_bar_button.dart';
 class SearchSection extends StatelessWidget {
   const SearchSection({super.key});
 
+
   @override
   Widget build(BuildContext context) {
+    final double screenWidth = MediaQuery.of(context).size.width;
+    // 寬度根據螢幕大小調整：手機佔80%，桌面上限600
+    final double containerWidth = screenWidth < 600
+        ? screenWidth * 0.8
+        : 600;
+
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
@@ -22,7 +29,7 @@ class SearchSection extends StatelessWidget {
         ),
         const SizedBox(height: 32),
         Container(
-          width: 500,
+          width: containerWidth,
           decoration: BoxDecoration(
             color: AppColors.searchBar,
               borderRadius: BorderRadius.circular(8),
