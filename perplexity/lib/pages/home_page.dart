@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:perplexity/widgets/search_section.dart';
 import 'package:perplexity/widgets/side_bar.dart';
+
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -11,11 +13,14 @@ class HomePage extends StatelessWidget {
         children: [
           // side navbar
           SideBar(),
-          Column(
-            children: [
-
-            ],
-          )
+          Column(children: [
+            // search section
+            Expanded(child: SearchSection()),
+            Container(
+              height: 20,
+            )
+            // footer
+          ]),
         ],
       ),
     );
