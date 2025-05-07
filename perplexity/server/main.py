@@ -1,14 +1,14 @@
 import uvicorn
 from fastapi import FastAPI
+
 from pydantic_models.chat_body import ChatBody
 from services.search_service import SearchService
-import os
-import sys
-
+from services.sort_source_service import SortSourceService
 
 app = FastAPI()
 
 search_service = SearchService()
+sort_service = SortSourceService()
 
 
 @app.get("/")
@@ -21,7 +21,8 @@ def chat_endpoint(body: ChatBody):
     print(body.query)
     # search the web and find appropriate sources
     search_results = search_service.web_search(body.query)
-    print(search_results)
+    # print(search_results)
+    sort_service.sort_sources(body.query, search_results)
     # sort the sources
     # generate the response using LLM
     return body.query
