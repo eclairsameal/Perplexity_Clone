@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:perplexity/pages/chat_page.dart';
 import 'package:perplexity/pages/home_page.dart';
 import 'package:perplexity/theme/colors.dart';
 
@@ -20,10 +21,18 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: AppColors.submitButton),
         // Modify the color of the input box mouse.
         textTheme: GoogleFonts.interTextTheme(
-          ThemeData.dark().textTheme,
+          ThemeData.dark().textTheme.copyWith(
+            bodyMedium: const TextStyle(
+              fontSize: 15,
+              color: AppColors.whiteColor,
+            )
+          ),
         ),
       ),
-      home: HomePage(),
+      //home: HomePage(),
+      home: const ChatPage(
+          question: "Who is ave mujica ？",
+      ),
     );
   }
 }
