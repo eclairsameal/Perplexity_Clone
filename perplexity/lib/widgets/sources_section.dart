@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:perplexity/services/chat_web_service.dart';
 import 'package:perplexity/theme/colors.dart';
 
 class SourcesSection extends StatefulWidget {
@@ -9,20 +10,31 @@ class SourcesSection extends StatefulWidget {
 }
 
 class _SourcesSectionState extends State<SourcesSection> {
-  List<Map<String, dynamic>> searchResults = [
-    {
-      'title':'ithub.com/karpathy/llm.c',
-      'url':'https://github.com/karpathy/llm.c'
-    },
-    {
-      'title':'deep-learning',
-      'url':'https://leemeng.tw/deep-learning-for-everyone-understand-neural-net-and-linear-algebra.html'
-    },
-    {
-      'title':'Empowering your AI applications with real-time,accurate search results tailored for LLMs and RAG.',
-      'url':'https://tavily.com/'
-    }
-  ];
+  List searchResults = [];
+  // List<Map<String, dynamic>> searchResults = [
+  //   {
+  //     'title':'ithub.com/karpathy/llm.c',
+  //     'url':'https://github.com/karpathy/llm.c'
+  //   },
+  //   {
+  //     'title':'deep-learning',
+  //     'url':'https://leemeng.tw/deep-learning-for-everyone-understand-neural-net-and-linear-algebra.html'
+  //   },
+  //   {
+  //     'title':'Empowering your AI applications with real-time,accurate search results tailored for LLMs and RAG.',
+  //     'url':'https://tavily.com/'
+  //   }
+  // ];
+  @override
+  void initState() {
+    super.initState();
+    ChatWebService().searchResultStream.listen((data){
+      setState(() {
+        searchResults = data['data'];
+      });
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Column(

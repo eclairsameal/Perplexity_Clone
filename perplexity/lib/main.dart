@@ -29,10 +29,11 @@ class MyApp extends StatelessWidget {
           ),
         ),
       ),
-      //home: HomePage(),
-      home: const ChatPage(
-          question: "Who is ave mujica ？",
-      ),
+      home: HomePage(),
+      // Test ChatPage code.
+      // home: const ChatPage(
+      //     question: "Who is ave mujica ？",
+      // ),
     );
   }
 }
