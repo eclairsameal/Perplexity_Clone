@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:perplexity/pages/chat_page.dart';
@@ -32,14 +33,23 @@ class _SearchSectionState extends State<SearchSection> {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Text(
+        kIsWeb ? Text(
             "Where knowledge begins",
             style: GoogleFonts.ibmPlexMono(
-                fontSize: 16,
+                fontSize: 30,
                 fontWeight: FontWeight.w400,
                 height: 1.2,
               letterSpacing: -0.5,
             ),
+        ) :
+        Text(
+          "Where knowledge begins",
+          style: GoogleFonts.ibmPlexMono(
+            fontSize: 20,
+            fontWeight: FontWeight.w400,
+            height: 1.2,
+            letterSpacing: -0.5,
+          ),
         ),
         const SizedBox(height: 32),
         Container(
