@@ -43,11 +43,11 @@ class ChatPage extends StatelessWidget {
               ),
             ),
           ),
-          kIsWeb ? Placeholder(
-            strokeWidth: 0,
-            color: AppColors.background,
-          )
-          :SizedBox(),
+          // kIsWeb ? Placeholder(
+          //   strokeWidth: 0,
+          //   color: AppColors.background,
+          // )
+          // :SizedBox(),
         ],
       ),
     );

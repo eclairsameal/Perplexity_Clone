@@ -32,7 +32,14 @@ class _SideBarState extends State<SideBar> {
               crossAxisAlignment: isCollapsed ? CrossAxisAlignment.center : CrossAxisAlignment.start,
               children: [
                 const SizedBox(height: 16),
-                SideBarButton(isCollapsed: isCollapsed, icon: Icons.add, text: "Home"),
+                SideBarButton(
+                    isCollapsed: isCollapsed,
+                    icon: Icons.add,
+                    text: "Home",
+                    onTap: () {
+                      Navigator.pushNamed(context, '/home');
+                    },
+                ),
 
                 const SizedBox(height: 16),
                 SideBarButton(isCollapsed: isCollapsed, icon: Icons.search, text: "Search"),
