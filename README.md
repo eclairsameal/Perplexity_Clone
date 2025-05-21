@@ -207,3 +207,16 @@ ws://localhost:8000/ws/chat_llama
   "data":"The current President of the United States is Joe Biden. He was inaugurated as the 46th President of the United States on January 20, 2021."
 }
 ```
+
+## To-do
+
+Additional functions
+
+ - [x] Only the local LLM（ Llama2 ）is used for searching.
+ - [ ] Change the local LLM.
+ - [ ] local LLM -> RAG search.
+
+Modify
+
+ - [ ] Config File
+ - [ ] Flutter Life Cycle
