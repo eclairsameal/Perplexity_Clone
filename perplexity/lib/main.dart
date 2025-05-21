@@ -36,7 +36,7 @@ class MyApp extends StatelessWidget {
           ),
         ),
       ),
-      home: HomePage(),
+      home: OnlyLlmPage(),
       // Test ChatPage code.
       // home: const ChatPage(
       //     question: "Who is ave mujica ？",

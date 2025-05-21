@@ -32,9 +32,15 @@ async def websocket_chat_endpoint(websocket: WebSocket):
     try:
         data = await websocket.receive_json()
         query = data.get("query")
+        print("----------------------- Query -----------------------")
+        print(query)
 
+        print("----------------------- Search Results -----------------------")
         search_results = search_service.web_search(query)
         sorted_results = sort_service.sort_sources(query, search_results)
+        print(f"sorted_results len : {len(sorted_results)}")
+        for res in sorted_results:
+            print(res['url'])
         await websocket.send_json({"type": "search_result", "data": sorted_results})
 
         response = await anyio.to_thread.run_sync(
@@ -42,6 +48,8 @@ async def websocket_chat_endpoint(websocket: WebSocket):
             query,
             sorted_results
         )
+        print("======================= LLM Generate_Response =======================")
+        print(response)
         await websocket.send_json({"type": "llm_response", "data": response})
     except Exception as e:
         print("Unexpected error occurred:", e)

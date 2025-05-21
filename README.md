@@ -18,7 +18,11 @@ Build a Perplexity Clone: Flutter RAG App using FastAPI and Gemini AI
 
 ## Technical Reference
 
-* [tavily](https://tavily.com/)
+* [Gemini API](https://ai.google.dev/)
+
+* [Tavily API](https://tavily.com/)
+
+* [LangChain](https://python.langchain.com/docs/introduction/)
 
 * [Trafilatura](https://trafilatura.readthedocs.io/en/latest/)
 
@@ -27,6 +31,10 @@ Build a Perplexity Clone: Flutter RAG App using FastAPI and Gemini AI
 * [Pretrained Models](https://sbert.net/docs/sentence_transformer/pretrained_models.html#original-models)
 
     all-MiniLM-L6-v2
+
+* [Cosine Similarity](https://zh.wikipedia.org/zh-hant/%E4%BD%99%E5%BC%A6%E7%9B%B8%E4%BC%BC%E6%80%A7)
+
+    [What is vector similarity search?](https://www.singlestore.com/blog/distance-metrics-in-machine-learning-simplfied/#what-is-vector-similarity-search)
 
 
 ## Installation and Execution
@@ -220,3 +228,4 @@ Modify
 
  - [ ] Config File
  - [ ] Flutter Life Cycle
+ - [ ] log

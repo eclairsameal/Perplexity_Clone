@@ -11,10 +11,9 @@ class SortSourceService:
         # Load a pretrained Sentence Transformer model
 
     def sort_sources(self, query: str, search_results: List[dict]):
-        relevance_docs =[]
+        relevance_docs = []
         query_embedding = self.embedding_model.encode(query)
         # print(query_embedding)
-
         for res in search_results:
             res_embedding = self.embedding_model.encode(res['content'])
             similarity = float(np.dot(query_embedding, res_embedding) / (
@@ -22,10 +21,10 @@ class SortSourceService:
             ))  # high similarity -> good
             # print(similarity)
             res['relevance_sore'] = similarity
+            print(f"url: {res['url']}, similarity: {res['relevance_sore']}")
 
             if similarity > similarity_value:
                 relevance_docs.append(res)
-
         return sorted(relevance_docs, key=lambda x: ['relevance_sore'], reverse=True)
 
 
