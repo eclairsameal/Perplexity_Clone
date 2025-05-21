@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:perplexity/pages/chat_page.dart';
 import 'package:perplexity/pages/home_page.dart';
+import 'package:perplexity/pages/only_llm_page.dart';
 import 'package:perplexity/theme/colors.dart';
 
 void main() {
@@ -18,6 +19,7 @@ class MyApp extends StatelessWidget {
       initialRoute: '/home',
       routes: {
         '/home': (context) => HomePage(),
+        '/onlyllm': (context) => OnlyLlmPage(),
         // 其他頁面
       },
       title: 'Perplexity Clone',

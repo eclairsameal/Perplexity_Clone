@@ -37,12 +37,19 @@ class _SideBarState extends State<SideBar> {
                     icon: Icons.add,
                     text: "Home",
                     onTap: () {
-                      Navigator.pushNamed(context, '/home');
+                      Navigator.pushNamed(context, '/onlyllm');
                     },
                 ),
 
                 const SizedBox(height: 16),
-                SideBarButton(isCollapsed: isCollapsed, icon: Icons.search, text: "Search"),
+                SideBarButton(
+                    isCollapsed: isCollapsed,
+                    icon: Icons.search,
+                    text: "Search",
+                    onTap: () {
+                      Navigator.pushNamed(context, '/home');
+                    },
+                ),
 
                 const SizedBox(height: 16),
                 SideBarButton(isCollapsed: isCollapsed, icon: Icons.language, text: "Spaces"),
