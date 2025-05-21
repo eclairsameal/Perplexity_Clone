@@ -3,11 +3,15 @@ import traceback
 import uvicorn
 from fastapi import FastAPI, WebSocket
 import anyio.to_thread
+from starlette.websockets import WebSocketDisconnect
 
 from pydantic_models.chat_body import ChatBody
 from services.search_service import SearchService
 from services.sort_source_service import SortSourceService
 from services.llm_service import LLMService
+
+from langchain_core.prompts import ChatPromptTemplate
+from langchain_ollama import OllamaLLM
 
 app = FastAPI()
 
@@ -66,6 +70,56 @@ def chat_endpoint(body: ChatBody):
     # print(sorted_results)
     # generate the response using LLM
     response = llm_service.generate_response(body.query, sorted_results)
+    print(response)
+    return response
+
+
+@app.websocket("/ws/chat_llama")
+async def websocket_chat_llama(websocket: WebSocket):
+    await websocket.accept()
+    try:
+        while True:
+            data = await websocket.receive_json()
+            query = data.get("query")
+            if not query:
+                await websocket.send_json({"type": "error", "message": "Query is missing"})
+                continue
+            print("----------------------- Query -----------------------")
+            print(query)
+            template = """Question: {question}
+            Answer: """
+            prompt = ChatPromptTemplate.from_template(template)
+            model = OllamaLLM(model="llama2")
+            chain = prompt | model
+            response = chain.invoke({"question": query})
+            print("----------------------- response -----------------------")
+            print(response)
+            await websocket.send_json({
+                "type": "llm_response",
+                "data": response
+            })
+    except WebSocketDisconnect:
+        print("WebSocket disconnected")
+    except Exception as e:
+        print("Unexpected error occurred:", e)
+        traceback.print_exc()
+        await websocket.send_json({"type": "error", "message": str(e)})
+    finally:
+        await websocket.close()
+
+
+@app.post("/chat_llama")
+def chat_llama(body: ChatBody):
+    print("----------------------- Query -----------------------")
+    print(body.query)
+    template = """Question: {question}
+
+        Answer: """
+    prompt = ChatPromptTemplate.from_template(template)
+    model = OllamaLLM(model="llama2")
+    chain = prompt | model
+    response = chain.invoke({"question": body.query})
+    print("----------------------- response -----------------------")
     print(response)
     return response
 
