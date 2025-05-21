@@ -31,30 +31,32 @@ Build a Perplexity Clone: Flutter RAG App using FastAPI and Gemini AI
 
 ## Installation and Execution
 
-Development:
+Development：
 
 ```
 pip install -r requirements.txt
 ```
 
-Environment Variable:
+Environment Variable：
 ```
 cd perplexity/server
 mkdir .env
 vi .env
 ```
 
-.env:
+.env：
 
 ```
 TAVILY_API_KEY=
 GEMINI_API_KEY=
 ```
 
-Execution:
+Python and Ollama Execution：
 
 ```
 python main.py
+
+ollama run llama2:latest
 ```
 
 ## Code File
