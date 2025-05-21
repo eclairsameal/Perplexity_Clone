@@ -16,7 +16,7 @@ class ChatPage extends StatelessWidget {
     return Scaffold(
       body: Row(
         children: [
-          kIsWeb ? SideBar() : SizedBox(),
+           SideBar(),
           const SizedBox(width: 20),
           Expanded(
             child: SingleChildScrollView(
